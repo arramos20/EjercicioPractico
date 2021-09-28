@@ -3,7 +3,9 @@ package com.salesianos.demo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,6 +24,9 @@ public class Monument {
     private String cityName;
     private String localization;
     private String monumentName;
+
+    //@Column(columnDefinition = "TEXT")
+    @Column(length = 1000)
     private String monumentDescription;
     private String photoURL;
 

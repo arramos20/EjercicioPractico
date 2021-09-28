@@ -8,31 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController //Controler + ResponseBody
-@RequestMapping("/task")
+@RequestMapping("/monumento")
 @RequiredArgsConstructor
 public class MonumentController {
 
     private final MonumentRepository repository;
 
-    @GetMapping("/monumento")
+    @GetMapping("/")
     public List<Monument> findAll() {
         return repository.findAll();
     }
 
-    @GetMapping("/monumento/{id}")
+    @GetMapping("/{id}")
     public Monument findOne(@PathVariable("id") Long id) {
         return repository.findById(id).orElse(null);
     }
 
-    @PostMapping("/monumento")
+    //Si devolvemos el mismo tipo de objeto, usamos un 200;
+    // Si no, usamos ResponseEntity para mandar un 201 para el creado exitosamente
+    @PostMapping("/")
     public ResponseEntity<Monument> create(@RequestBody Monument monument){
-        //return repository.save(task);
+        //return repository.save(monumento);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(repository.save(monument));
     }
 
-    @PutMapping("/monumento/{id}")
+    @PutMapping("/{id}")
     public Monument edit(@RequestBody Monument monument, @PathVariable Long id){
 
         Monument antiguo = repository.findById(id).orElse(monument);
@@ -46,15 +48,33 @@ public class MonumentController {
         antiguo.setPhotoURL(monument.getPhotoURL());
 
         return repository.save(antiguo);
-
     }
 
-    @DeleteMapping("/monumento/{id}")
+    /*
+        @PutMapping("/{id}")
+    public ResponseEntity<Monumento> edit(
+            @RequestBody Monumento e,
+            @PathVariable Long id) {
+
+        return ResponseEntity.of(
+            repository.findById(id).map(m -> {
+               m.setCodigoPais(e.getCodigoPais());
+               m.setPais(e.getPais());
+               m.setCiudad(e.getCiudad());
+               m.setDescripcion(e.getDescripcion());
+               m.setLoc(e.getLoc());
+               m.setNombre(e.getNombre());
+               m.setUrlImagen(e.getUrlImagen());
+               repository.save(m);
+               return m;
+            })
+        );
+     */
+
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
         //return ResponseEntity.status(204).build();
     }
-
-
 }

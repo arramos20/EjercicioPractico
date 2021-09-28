@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "c7c4c7fa-482c-4674-9b23-505c9fc41c68",
+		"name": "Monument Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Buscar todos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/monumento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Añadir monumento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"countryCode\": \"US\",\r\n    \"countryName\": \"Estados Unidos\",\r\n    \"cityName\": \"Los Ángeles\",\r\n    \"localization\": \"-2029.93, -897.28\",\r\n    \"monumentName\": \"Paseo de la fama\",\r\n    \"monumentDescription\": \"Paseo creado en 1983, donde cada actor galardonado con un Óscar es representado con una estrella con su nombre en la acera del paseo.\",\r\n    \"photoURL\": \"https://www.infobae.com/new-resizer/lJa5aKU1qTfK-OxPcJkEPcV__2w=/1200x900/filters:format(jpg):quality(85)//s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2018/08/10125254/estrellas-vinilo-trump-paseo-hollywood-1.png\"\r\n\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/monumento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/monumento/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/monumento/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar monumento",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"countryCode\": \"BA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/monumento/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"monumento",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
